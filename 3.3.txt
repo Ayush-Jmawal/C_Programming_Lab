@@ -1,0 +1,42 @@
+#include<stdio.h>
+int main() {
+float r, l, b, area_circle, perimeter_circle, area_rectangle, perimeter_rectangle;
+
+// Get user input for r
+printf("Enter the radius of the circle: ");
+scanf("%f", &r);
+
+// Calculate and output the area of the circle
+area_circle = 22.0/7.0 * r * r;
+printf("Area of the circle: %.2f\n", area_circle);
+
+// Calculate and output the perimeter of the circle
+perimeter_circle = 2 * 22.0/7.0 * r;
+printf("Perimeter of the circle: %.2f\n", perimeter_circle);
+
+// Get user input for l and b
+printf("Enter the length and breadth of the rectangle: ");
+scanf("%f %f", &l, &b);
+
+// Calculate and output the area of the rectangle
+area_rectangle = l * b;
+printf("Area of the rectangle: %.2f\n", area_rectangle);
+
+// Calculate and output the perimeter of the rectangle
+perimeter_rectangle = 2 * l + 2 * b;
+printf("Perimeter of the rectangle: %.2f\n", perimeter_rectangle);
+
+//Get user input for r
+printf("Enter the side of the square: ");
+scanf("%f", &r);
+
+// Calculate and output the area of the square
+float area_square = r * r;
+printf("Area of the square: %.2f\n", area_square);
+
+// Calculate and output the perimeter of the square
+float perimeter_square = 4 * r;
+printf("Perimeter of the square: %.2f\n", perimeter_square);
+
+return 0;
+}
