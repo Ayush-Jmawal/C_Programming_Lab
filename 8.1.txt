@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str1[] = "Hello";
+    char str2[] = "World";
+    char str3[100];
+    int length;
+
+    // Copying string
+    strcpy(str3, str1);
+    printf("After copying, str3 = %s\n", str3);
+
+    // Concatenating string
+    strcat(str3, " ");
+    strcat(str3, str2);
+    printf("After concatenating, str3 = %s\n", str3);
+
+    // Get the length of a string
+    length = strlen(str3);
+    printf("The length of str3 is %d\n", length);
+
+    // Compare two strings
+    int result = strcmp(str1, str2);
+    if(result == 0) {
+        printf("str1 and str2 are equal.\n");
+    } else if(result > 0) {
+        printf("str1 is greater than str2.\n");
+    } else {
+        printf("str1 is less than str2.\n");
+    }
+
+    // Convert lowercase letters to uppercase letters
+    for(int i = 0; i < length; i++) {
+        if(str3[i] >= 'a' && str3[i] <= 'z') {
+            str3[i] = str3[i] - 32;
+        }
+    }
+    printf("After converting lowercase letters to uppercase letters, str3 = %s\n", str3);
+
+    return 0;
+}
