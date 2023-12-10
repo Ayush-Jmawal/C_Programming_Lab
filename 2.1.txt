@@ -1,0 +1,18 @@
+#include<stdio.h>
+int main(){
+    int a,b,sum,sub,multiplication,remainder;
+
+    printf("Enter your value");
+    scanf("%d%d",&a,&b);
+    
+    sum=a+b;
+    sub=a-b;
+    multiplication=a*b;
+    remainder=a%b;
+
+    printf("%d\n",sum);
+    printf("%d\n",sub);
+    printf("%d\n",multiplication);
+    printf("%d\n",remainder);
+    
+}
