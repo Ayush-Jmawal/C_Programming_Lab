@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <string.h>
+
+// Struct to hold student data
+typedef struct {
+    char name[50];
+    int rollNo;
+    float marks;
+} Student;
+
+// Function to display student details
+void displayStudentDetails(Student student) {
+    printf("Name: %s\n", student.name);
+    printf("Roll No: %d\n", student.rollNo);
+    printf("Marks: %.2f\n", student.marks);
+}
+
+// Function to calculate total marks and average
+void calculateTotalAndAverage(Student *students, int size) {
+    float totalMarks = 0.0;
+
+    for(int i = 0; i < size; i++) {
+        totalMarks += students[i].marks;
+    }
+
+    float average = totalMarks / size;
+    printf("Total Marks: %.2f\n", totalMarks);
+    printf("Average Marks: %.2f\n", average);
+}
+
+int main() {
+    Student students[] = {
+        {"Ayush", 1, 90},
+        {"Aman", 2, 85},
+        {"Raghav", 3, 95},
+        {"Saransh", 4, 98}
+    };
+
+    int size = sizeof(students) / sizeof(students[0]);
+
+    // Display details of all students
+    for(int i = 0; i < size; i++) {
+        printf("Student %d\n", i + 1);
+        displayStudentDetails(students[i]);
+        printf("\n");
+    }
+
+    // Calculate total marks and average
+    calculateTotalAndAverage(students, size);
+
+    return 0;
+}
