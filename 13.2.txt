@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <string.h>
+
+union studentData {
+    struct {
+        char name[50];
+        int age;
+        float gpa;
+    } info;
+
+    struct {
+        char grade[50];
+        int totalPoints;
+        float gradePointAverage;
+    } courseInfo;
+};
+
+void getStudentData(union studentData *student) {
+    printf("Enter the student's name: ");
+    fgets(student->info.name, sizeof(student->info.name), stdin);
+    student->info.name[strcspn(student->info.name, "\n")] = '\0';
+
+    printf("Enter the student's age: ");
+    scanf("%d", &student->info.age);
+
+    printf("Enter the student's GPA: ");
+    scanf("%f", &student->info.gpa);
+}
+
+void getCourseInfo(union studentData *student) {
+    printf("Enter the student's grade: ");
+    fgets(student->courseInfo.grade, sizeof(student->courseInfo.grade), stdin);
+    student->courseInfo.grade[strcspn(student->courseInfo.grade, "\n")] = '\0';
+
+    printf("Enter the total points earned: ");
+    scanf("%d", &student->courseInfo.totalPoints);
+
+    printf("Enter the student's grade point average: ");
+    scanf("%f", &student->courseInfo.gradePointAverage);
+}
+
+void displayStudentData(union studentData *student) {
+    printf("Student Name: %s\n", student->info.name);
+    printf("Student Age: %d\n", student->info.age);
+    printf("Student GPA: %.2f\n", student->info.gpa);
+    printf("Student Grade: %s\n", student->courseInfo.grade);
+    printf("Total Points Earned: %d\n", student->courseInfo.totalPoints);
+    printf("Student Grade Point Average: %.2f\n", student->courseInfo.gradePointAverage);
+}
+
+int main() {
+    union studentData student;
+
+    getStudentData(&student);
+    getCourseInfo(&student);
+    displayStudentData(&student);
+
+    return 0;
+}
