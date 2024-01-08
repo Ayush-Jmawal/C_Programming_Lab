@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Student {
+    int id;
+    char name[50];
+    float marks[5];
+};
+
+void addStudent(struct Student** students, int* n);
+float getTotalMarks(struct Student* student);
+
+int main() {
+    struct Student* students = NULL;
+    int n = 0;
+
+    int choice;
+    do {
+        printf("\n\n***** MENU *****\n");
+        printf("1. Add Student\n");
+        printf("2. Get Total Marks of a Student\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: addStudent(&students, &n); break;
+            case 2: {
+                int id;
+                printf("Enter Student ID: ");
+                scanf("%d", &id);
+                for (int i = 0; i < n; i++) {
+                    if (students[i].id == id) {
+                        float total = getTotalMarks(&students[i]);
+                        printf("Total Marks of Student ID %d is %.2f\n", id, total);
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+    } while (choice != 3);
+
+    // Free dynamically allocated memory
+    free(students);
+
+    return 0;
+}
+
+void addStudent(struct Student** students, int* n) {
+    (*n)++;
+    *students = (struct Student*) realloc(*students, (*n) * sizeof(struct Student));
+    struct Student* newStudent = &((*students)[(*n) - 1]);
+
+    printf("Enter Student ID: ");
+    scanf("%d", &(newStudent->id));
+    getchar(); // to eat newline from input stream
+    printf("Enter Student Name: ");
+    fgets(newStudent->name, 50, stdin);
+
+    printf("Enter marks for 5 subjects: ");
+    for (int i = 0; i < 5; i++) {
+        scanf("%f", &(newStudent->marks[i]));
+    }
+}
+
+float getTotalMarks(struct Student* student) {
+    float total = 0;
+    for (int i = 0; i < 5; i++) {
+        total += student->marks[i];
+    }
+    return total;
+}
