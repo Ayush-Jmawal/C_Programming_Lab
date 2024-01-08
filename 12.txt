@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void show(int* array, int length) {
+    for (int i = 0; i < length; i++) {
+        printf("%d ", array[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    // Malloc
+    int* arr1 = (int*) malloc(5 * sizeof(int));
+    for (int i = 0; i < 5; i++) {
+        arr1[i] = i + 1;
+    }
+    show(arr1, 5);
+
+    // Calloc
+    int* arr2 = (int*) calloc(5, sizeof(int));
+    for (int i = 0; i < 5; i++) {
+        arr2[i] = i + 1;
+    }
+    show(arr2, 5);
+
+    // Realloc
+    arr1 = (int*) realloc(arr1, 7 * sizeof(int));
+    arr1[5] = 6;
+    arr1[6] = 7;
+    show(arr1, 7);
+
+    // Free
+    free(arr1);
+    free(arr2);
+
+    return 0;
+}
